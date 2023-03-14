@@ -10,7 +10,7 @@ RUN apt-get install sudo curl git nodejs npm jq apache2 wget apt-utils -y
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
-RUN git clone --branch fix_module https://github.com/bartlomiejzuber/quakejs
+RUN git clone https://github.com/bartlomiejzuber/quakejs.git
 WORKDIR /quakejs
 RUN npm install
 RUN ls
@@ -30,4 +30,4 @@ ADD entrypoint.sh /entrypoint.sh
 # Was having issues with Linux and Windows compatibility with chmod -x, but this seems to work in both
 RUN chmod 777 ./entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
